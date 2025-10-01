@@ -1,0 +1,34 @@
+server:
+  port: 0
+app:
+  iot:
+    kafka:
+      topic: iot-reading-topic
+      consumer-group-id: iot-ingestion-consumer
+spring:
+  application:
+    name: iot-inquiry-service
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:29092
+      group-id: iot-ingestion-consumer
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring:
+          json:
+            trusted:
+              packages: com.iot.shared.event # add this to avoid illegalArgumentException trusted package issue
+  datasource:
+    url: jdbc:postgresql://localhost:5432/iot_data
+    username: user
+    password: password #Add to vault
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect

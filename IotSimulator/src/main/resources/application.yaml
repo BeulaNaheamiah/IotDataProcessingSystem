@@ -1,0 +1,16 @@
+server:
+  port: 0
+app:
+  iot:
+    kafka:
+      topic: iot-reading-topic
+spring:
+  application:
+    name: IotSimulator
+  config:
+    import: classpath:iot-device-config.yaml
+  kafka:
+    producer:
+      bootstrap-servers: localhost:29092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer

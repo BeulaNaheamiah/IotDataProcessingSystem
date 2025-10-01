@@ -1,0 +1,31 @@
+iot:
+  devices:
+    - id: "thermostat-1"
+      type: "Thermostat"
+      groups: ["environmental", "Zone A"]
+      behavior:
+        strategy: "RANDOM_RANGE"
+        min: 18.0
+        max: 24.0
+    - id: "heart-rate-1"
+      type: "HeartRateMonitor"
+      groups: ["medical", "wearable"]
+      behavior:
+        strategy: "RANDOM_RANGE"
+        min: 60.0
+        max: 100.0
+    - id: "fuel-1"
+      type: "FuelSensor"
+      groups: ["automotive", "Zone A"]
+      behavior:
+        strategy: "DECREASING"
+        initialValue: 85.0
+        decrement: 0.1
+    # To add a new device, just add another entry here!
+    - id: "pressure-1"
+      type: "PressureSensor"
+      groups: ["industrial"]
+      behavior:
+        strategy: "RANDOM_RANGE"
+        min: 980.0
+        max: 1050.0

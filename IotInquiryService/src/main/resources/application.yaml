@@ -1,0 +1,23 @@
+server:
+  port: 64440
+app:
+  security:
+    user:
+        name: operator
+        password: password # change it in production and read from Vault
+spring:
+  application:
+    name: iot-inquiry-service
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/iot_data
+    username: user
+    password: password #Add to vault
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
